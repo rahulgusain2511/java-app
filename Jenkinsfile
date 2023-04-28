@@ -6,7 +6,7 @@ pipeline {
 
         stage("Git Checkout"){
             steps {
-                git branch: 'main', url: 'https://github.com/vishalchauhan91196/java-app.git'
+                git branch: 'main', url: 'https://github.com/rahulgusain2511/java-app.git'
             }
         }
 
@@ -31,7 +31,7 @@ pipeline {
         stage("Static Code Analysis"){
             steps {
                 script {
-                    withSonarQubeEnv(credentialsId: 'sonarqube') {
+                    withSonarQubeEnv(credentialsId: 'sonarqube1') {
                         sh 'mvn clean package sonar:sonar'
                     }
                 }
@@ -58,8 +58,8 @@ pipeline {
                     ]], 
                     credentialsId: 'nexusid', 
                     groupId: 'com.example', 
-                    nexusUrl: '44.200.37.98:8081', 
-                    nexusVersion: 'nexus3', 
+                    nexusUrl: '13.50.14.153:8081', 
+                    nexusVersion: 'nexus2', 
                     protocol: 'http', 
                     repository: 'java-release', 
                     version: '1.0.0'
